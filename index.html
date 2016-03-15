@@ -64,6 +64,13 @@
         margin-right:4px;
         background:#333;
       }
+      #edge {
+        position:absolute;
+        width:1px;
+        height:100vh;
+        top:0;
+        left:0;
+      }
 
       iframe {
         width:95vw;
@@ -101,11 +108,13 @@
         <li><div><span class="fav"></span> ZEIT Online</div></li>
       </ul>
       <div class="shadow"></div>
+      <div id="edge"></div>
     </div>
     <iframe src="http://derstandard.at" width="400" height="300"></iframe>
     <script type="text/javascript">
       var timer;
       var tc = document.getElementById('tc');
+      var edge = document.getElementById('edge');
       tc.addEventListener('mouseover', function(e) {
         window.clearTimeout(timer);
         timer = window.setTimeout(function() {
@@ -117,6 +126,10 @@
         timer = window.setTimeout(function() {
           tc.classList.remove('expand');
         }, 300);
+      });
+      edge.addEventListener('mouseover', function(e) {
+        window.clearTimeout(timer);
+        tc.classList.add('expand');
       });
 
       // Random Colors
