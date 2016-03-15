@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tab Center prototype</title>
+    <style media="screen">
+      body {
+        margin:0; padding:0;
+        font-family:"Segoe UI";
+      }
+      #tc {
+        height:100vh;
+        width:50px;
+        background:#fbfbfb;
+        border-right:1px solid #999;
+        overflow-x:hidden;
+        transition:all 0.15s ease-out;
+      }
+      .shadow {
+        position:absolute;
+        right:0; top:0;
+        width:30px;
+        height:100vh;
+        background-image:linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.15));
+        transition:all 0.15s ease-out;
+      }
+      #tabs {
+        margin:0; padding:0;
+        list-style:none;
+        cursor:default;
+      }
+      #tabs li {
+        padding:0;
+        font-size:13px;
+        height:36px;
+        border-left:4px solid #fff;
+      }
+      #tabs li, #tabs div {
+        width:200px;
+      }
+      #tabs div {
+        padding:6px 4px 6px 10px;
+        height:24px;
+      }
+      #tabs li:hover div {
+        background-color:#eee;
+      }
+      body:not(.full-expand) #tabs div:hover {
+        position:absolute;
+        margin-bottom:30px;
+        box-shadow:0 0 10px rgba(0,0,0,0.2);
+      }
+      #tabs li.active div {
+        background-color:#d8f2ff;
+      }
+      .fav {
+        display:inline-block;
+        width:16px;
+        height:16px;
+        position:relative;
+        top:2px;
+        margin-right:4px;
+        background:#333;
+      }
+
+      /* Dynamic Classes */
+      .expand {
+        width:200px !important;
+        box-shadow:5px 0 10px rgba(0,0,0,0.15);
+        background-color:#fff !important;
+      }
+      .expand .shadow {
+        opacity:0;
+      }
+
+      /*State*/
+      .full-expand #tc {
+        position:relative;
+      }
+    </style>
+  </head>
+  <body class="full-expand">
+    <div id="tc">
+      <ul id="tabs">
+        <li><div><span class="fav"></span> The New York Times</div></li>
+        <li><div><span class="fav"></span> Some other Tab</div></li>
+        <li><div><span class="fav"></span> Mozilla</div></li>
+        <li><div><span class="fav"></span> YouTube</div></li>
+        <li><div><span class="fav"></span> ZEIT Online</div></li>
+      </ul>
+      <div class="shadow"></div>
+    </div>
+    <script type="text/javascript">
+      var timer;
+      var tc = document.getElementById('tc');
+      tc.addEventListener('mouseover', function(e) {
+        window.clearTimeout(timer);
+        timer = window.setTimeout(function() {
+          tc.classList.add('expand');
+        }, 300);
+      });
+      tc.addEventListener('mouseout', function(e) {
+        window.clearTimeout(timer);
+        timer = window.setTimeout(function() {
+          tc.classList.remove('expand');
+        }, 300);
+      });
+
+      // Random Colors
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('#tabs li'));
+      tabs.forEach(function(tab) {
+        console.log(tab);
+        tab.style.borderColor = 'hsl('+ Math.random()*360 +',70%,70%)';
+      });
+    </script>
+  </body>
+</html>
