@@ -10,7 +10,7 @@
       }
       #tc {
         height:100vh;
-        width:50px;
+        width:5vw;
         background:#fbfbfb;
         border-right:1px solid #999;
         overflow-x:hidden;
@@ -63,6 +63,15 @@
         background:#333;
       }
 
+      iframe {
+        width:95vw;
+        height:100vh;
+        position:absolute;
+        border:none;
+        top:0;
+        left:5vw;
+      }
+
       /* Dynamic Classes */
       .expand {
         width:200px !important;
@@ -90,6 +99,7 @@
       </ul>
       <div class="shadow"></div>
     </div>
+    <iframe src="http://nytimes.com" width="400" height="300"></iframe>
     <script type="text/javascript">
       var timer;
       var tc = document.getElementById('tc');
