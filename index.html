@@ -102,6 +102,45 @@
         background-color:#333;
       }
 
+      /*Top Bar*/
+      .top-bar {
+        position:relative;
+        width:260px;
+        height:36px;
+        color:#fff;
+        background-color:#424f5a;
+        cursor:default;
+      }
+      #new-tab {
+        position:absolute;
+        width:226px;
+        height:36px;
+      }
+      #pin {
+        position:absolute;
+        right:0;
+        width:34px;
+        height:36px;
+      }
+      #new-tab:hover, #pin:hover {
+        background-color:#516270;
+        transition:all 0.15s ease-out;
+      }
+
+      /*Pinning*/
+      body.pinned #tc {
+        width:260px !important;
+        box-shadow:none !important;
+        background-color:#fff !important;
+      }
+      body.pinned .shadow {
+        display:none;
+      }
+      body.pinned iframe {
+        width: calc(100vw - 260px);
+        left:260px;
+      }
+
       /* Dynamic Classes */
       .expand {
         width:260px !important;
@@ -120,6 +159,26 @@
   </head>
   <body class="full-expand">
     <div id="tc">
+      <div class="top-bar">
+        <span id="new-tab">
+          <svg>
+            <g transform="translate(22, 18)">
+              <circle r="8" fill="white" />
+              <line x1="-4" y1="0" x2="4" y2="0" stroke="#424f5a" />
+              <line y1="-4" x1="0" y2="4" x2="0" stroke="#424f5a" />
+            </g>
+            <text x="40" y="23" font-size="14" fill="white">New</text>
+          </svg>
+          </span>
+        <span id="pin">
+          <svg>
+            <g transform="translate(8,9)">
+              <line x1="0" y1="8" x2="6" y2="8" stroke="white" />
+              <polygon points="6,0 6,16 10,12 16,12 16,4 10,4" fill="white" />
+            </g>
+          </svg>
+        </span>
+      </div>
       <ul id="tabs">
         <li><div><span class="fav"></span> The New York Times <span class="close">×</span></div></li>
         <li><div><span class="fav"></span> Some other Tab <span class="close">×</span></div></li>
@@ -133,8 +192,10 @@
     <iframe src="http://wikipedia.org" width="400" height="300"></iframe>
     <script type="text/javascript">
       var timer;
+      var pinState = false;
       var tc = document.getElementById('tc');
       var edge = document.getElementById('edge');
+      var pin = document.getElementById('pin');
       tc.addEventListener('mouseover', function(e) {
         window.clearTimeout(timer);
         timer = window.setTimeout(function() {
@@ -150,6 +211,9 @@
       edge.addEventListener('mouseover', function(e) {
         window.clearTimeout(timer);
         tc.classList.add('expand');
+      });
+      pin.addEventListener('click', function(e) {
+        document.getElementsByTagName('body')[0].classList.toggle('pinned');
       });
 
       // Random Colors
