@@ -38,11 +38,10 @@
         height:36px;
         border-left:4px solid #fff;
       }
-      #tabs li, #tabs div {
-        width:200px;
-      }
       #tabs div {
+        position:relative;
         padding:6px 4px 6px 10px;
+        width:244px;
         height:24px;
       }
       #tabs li:hover div {
@@ -65,6 +64,26 @@
         margin-right:4px;
         background:#333;
       }
+      .close {
+        display:inline-block;
+        position:absolute;
+        right:0;
+        top:0;
+        height:36px;
+        width:36px;
+        color:#333;
+        font-size:26px;
+        text-align:center;
+        line-height:28px;
+        opacity:0;
+      }
+      #tabs div:hover .close {
+        opacity:1;
+      }
+      .close:hover {
+        color:#fff;
+        background-color:#f00;
+      }
       #edge {
         position:absolute;
         width:1px;
@@ -85,7 +104,7 @@
 
       /* Dynamic Classes */
       .expand {
-        width:200px !important;
+        width:260px !important;
         box-shadow:5px 0 10px rgba(0,0,0,0.15);
         background-color:#fff !important;
       }
@@ -102,11 +121,11 @@
   <body class="full-expand">
     <div id="tc">
       <ul id="tabs">
-        <li><div><span class="fav"></span> The New York Times</div></li>
-        <li><div><span class="fav"></span> Some other Tab</div></li>
-        <li><div><span class="fav"></span> Mozilla</div></li>
-        <li><div><span class="fav"></span> YouTube</div></li>
-        <li><div><span class="fav"></span> ZEIT Online</div></li>
+        <li><div><span class="fav"></span> The New York Times <span class="close">×</span></div></li>
+        <li><div><span class="fav"></span> Some other Tab <span class="close">×</span></div></li>
+        <li><div><span class="fav"></span> Mozilla <span class="close">×</span></div></li>
+        <li><div><span class="fav"></span> YouTube <span class="close">×</span></div></li>
+        <li><div><span class="fav"></span> ZEIT Online <span class="close">×</span></div></li>
       </ul>
       <div class="shadow"></div>
       <div id="edge"></div>
