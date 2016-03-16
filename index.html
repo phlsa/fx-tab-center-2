@@ -102,6 +102,15 @@
         left:5vw;
         background-color:#333;
       }
+      .toolbar {
+        width:95vw;
+        height:39px;
+        position:absolute;
+        top:0;
+        left:5vw;
+        background-image:url('toolbar.png');
+        background-size:auto 100%;
+      }
 
       /*Top Bar*/
       .top-bar {
@@ -137,7 +146,7 @@
       body.pinned .shadow {
         display:none;
       }
-      body.pinned iframe {
+      body.pinned iframe, body.pinned .toolbar {
         width: calc(100vw - 260px);
         left:260px;
       }
@@ -192,6 +201,7 @@
       <div id="edge"></div>
     </div>
     <iframe src="http://wikipedia.org" width="400" height="300"></iframe>
+    <div class="toolbar"></div>
     <script type="text/javascript">
       var timer;
       var pinState = false;
