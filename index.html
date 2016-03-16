@@ -12,7 +12,7 @@
         position:absolute;
         height:100vh;
         width:5vw;
-        background:#fbfbfb;
+        background:#fcfcfc;
         border-right:1px solid #999;
         overflow-x:hidden;
         transition:all 0.15s cubic-bezier(.08,.78,.28,.97);
@@ -36,16 +36,16 @@
         padding:0;
         font-size:13px;
         height:36px;
-        border-left:4px solid #fff;
       }
       #tabs div {
         position:relative;
         padding:6px 4px 6px 10px;
         width:244px;
         height:24px;
+        border-left:4px solid transparent;
       }
       #tabs li:hover div {
-        background-color:#eee;
+        background-color:#d4d4d4;
       }
       body:not(.full-expand) #tabs div:hover {
         position:absolute;
@@ -53,7 +53,8 @@
         box-shadow:0 0 10px rgba(0,0,0,0.2);
       }
       #tabs li.active div {
-        background-color:#d8f2ff;
+        background-color:#cfe8f4;
+        border-left-color:#f77100;
       }
       .fav {
         display:inline-block;
@@ -82,7 +83,7 @@
       }
       .close:hover {
         color:#fff;
-        background-color:#f00;
+        background-color:#d92215;
       }
       #edge {
         position:absolute;
@@ -182,6 +183,7 @@
       <ul id="tabs">
         <li><div><span class="fav"></span> The New York Times <span class="close">×</span></div></li>
         <li><div><span class="fav"></span> Some other Tab <span class="close">×</span></div></li>
+        <li class="active"><div><span class="fav"></span> Wikipedia <span class="close">×</span></div></li>
         <li><div><span class="fav"></span> Mozilla <span class="close">×</span></div></li>
         <li><div><span class="fav"></span> YouTube <span class="close">×</span></div></li>
         <li><div><span class="fav"></span> ZEIT Online <span class="close">×</span></div></li>
@@ -217,11 +219,11 @@
       });
 
       // Random Colors
-      var tabs = Array.prototype.slice.call(document.querySelectorAll('#tabs li'));
-      tabs.forEach(function(tab) {
-        console.log(tab);
-        tab.style.borderColor = 'hsl('+ Math.random()*360 +',70%,70%)';
-      });
+      // var tabs = Array.prototype.slice.call(document.querySelectorAll('#tabs li'));
+      // tabs.forEach(function(tab) {
+      //   console.log(tab);
+      //   tab.style.borderColor = 'hsl('+ Math.random()*360 +',70%,70%)';
+      // });
     </script>
   </body>
 </html>
